@@ -183,8 +183,8 @@ int main() {
     generateMaze(maze, N, M);
 
     // Pick entrance and exit
-    pair<int,int> entrance = chooseBoundaryCell(maze);
-    pair<int,int> exitcell = chooseBoundaryCell(maze);
+    pair<int, int> entrance = chooseBoundaryCell(maze);
+    pair<int, int> exitcell = chooseBoundaryCell(maze);
 
     while (exitcell == entrance) {
         exitcell = chooseBoundaryCell(maze);
@@ -208,9 +208,16 @@ int main() {
     // Call your DFS, track visited, and fill parent_r and parent_c
     // ------------------------------------------------------
 
-   bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
+    bool found = dfs(ent_r, ent_c, maze, visited, parent_r, parent_c, exit_r, exit_c);
 
     // ------------------------------------------------------
     // STUDENT WORK:
     // If found, print the path
     // ------------------------------------------------------
+
+    if (found) {
+        printPath(exitcell, parent_r, parent_c, ent_r, ent_c);
+    } else {
+        cout << "No path found!";
+    }
+}
